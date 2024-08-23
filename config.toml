@@ -1,0 +1,7 @@
+# wireguard configuration example
+
+active_cmd = "cat /proc/net/dev | grep wg0"
+rx_cmd = "cat /proc/net/dev | grep -oP 'wg0'':\\s*\\K\\d+'"
+tx_cmd = "cat /proc/net/dev | grep -oP 'wg0'':\\s*(\\d+\\s+){8}\\K\\d+'"
+up_cmd = "wg-up"
+down_cmd = "wg-down"

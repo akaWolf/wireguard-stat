@@ -5,14 +5,15 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 from wg_interface import is_active
-from icon_interface import set_image, set_tooltip, set_callback_activate
+from icon_interface import set_image, set_callback_activate
 from jobs import tl
+from config import config
 
 def trayicon_activate(event):
     if is_active():
-        to_run = "/home/akawolf/sources/wg-down"
+        to_run = config.down_cmd
     else:
-        to_run = "/home/akawolf/sources/wg-up"
+        to_run = config.up_cmd
 
     import subprocess
     out = subprocess.getoutput(to_run)
@@ -20,8 +21,6 @@ def trayicon_activate(event):
 
     set_image()
 
-
-set_tooltip("wireguard")
 
 set_callback_activate(trayicon_activate)
 
